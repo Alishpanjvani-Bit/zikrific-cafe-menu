@@ -1,383 +1,331 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>E-ERA Tech Solutions | Premium Real Estate Tech Hyderabad</title>
-    <meta name="title" content="E-ERA Tech Solutions | Premium Real Estate Tech Hyderabad">
-    <meta name="description" content="High-end web development, app solutions, and premium hosting tailored for the real estate elite. Delivering digital excellence at disruptive market rates in Hyderabad.">
-    <meta name="keywords" content="Real Estate Web Development, IT Services Hyderabad, Affordable Web Design, Property Portfolios, E-ERA Tech">
-    <meta name="author" content="Alish & Renish">
 
-    <!-- Open Graph / Facebook / WhatsApp -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://yourusername.github.io/your-repo-name/">
-    <meta property="og:title" content="E-ERA Tech Solutions | Premium Real Estate Tech">
-    <meta property="og:description" content="Architecting Digital Excellence for Real Estate. Premium tech delivered with disruptive market efficiency.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&h=630&q=80">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://yourusername.github.io/your-repo-name/">
-    <meta property="twitter:title" content="E-ERA Tech Solutions | Premium Real Estate Tech">
-    <meta property="twitter:description" content="Architecting Digital Excellence for Real Estate. Premium tech delivered with disruptive market efficiency.">
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1200&h=630&q=80">
+<title>Zikrific Cafe</title>
 
-    <!-- Scripts: React, ReactDOM, Babel (for JSX), Tailwind, and Lucide Icons -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
 
-    <style>
-        body {
-            font-family: 'Playfair Display', serif;
-            background-color: #080808;
-            margin: 0;
-            overflow-x: hidden;
-        }
-        
-        .font-sans {
-            font-family: 'Inter', sans-serif;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins;
+scroll-behavior:smooth;
+}
 
-        @keyframes slide-up {
-          from { opacity: 0; transform: translateY(20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-slide-up {
-          animation: slide-up 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+body{
+background:#f5f2eb;
+color:#333;
+}
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-          width: 5px;
-        }
-        ::-webkit-scrollbar-track {
-          background: #080808;
-        }
-        ::-webkit-scrollbar-thumb {
-          background: #1a1a1a;
-          border-radius: 0px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-          background: #D4AF37;
-        }
-        
-        html {
-          scroll-behavior: smooth;
-        }
+/* NAVBAR */
 
-        .selection-gold::selection {
-            background-color: rgba(212, 175, 55, 0.3);
-        }
-    </style>
+nav{
+position:sticky;
+top:0;
+background:white;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 8%;
+box-shadow:0 2px 10px rgba(0,0,0,0.08);
+z-index:999;
+}
+
+.logo{
+font-size:22px;
+font-weight:600;
+color:#6b4f2a;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+nav a{
+text-decoration:none;
+color:#333;
+font-weight:500;
+}
+
+/* HERO */
+
+.hero{
+height:85vh;
+background:url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.hero h1{
+font-size:60px;
+background:rgba(0,0,0,0.45);
+padding:25px 40px;
+border-radius:10px;
+}
+
+/* SECTION */
+
+section{
+padding:70px 10%;
+}
+
+.title{
+text-align:center;
+font-size:40px;
+margin-bottom:50px;
+}
+
+/* MENU */
+
+.menu-category{
+margin-bottom:60px;
+}
+
+.menu-category h3{
+margin-bottom:20px;
+border-bottom:3px solid #c59d5f;
+display:inline-block;
+padding-bottom:6px;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.menu-item{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 4px 15px rgba(0,0,0,0.08);
+display:flex;
+justify-content:space-between;
+transition:0.3s;
+}
+
+.menu-item:hover{
+transform:translateY(-5px);
+}
+
+.price{
+color:#c59d5f;
+font-weight:bold;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+}
+
+/* CONTACT */
+
+.contact{
+text-align:center;
+}
+
+.whatsapp{
+display:inline-block;
+margin-top:25px;
+padding:14px 28px;
+background:#25D366;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:500;
+}
+
+/* FOOTER */
+
+footer{
+background:#222;
+color:white;
+text-align:center;
+padding:25px;
+}
+
+</style>
+
 </head>
-<body class="selection-gold">
-    <div id="root"></div>
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-        
-        // Lucide Icon Component Wrapper
-        const Icon = ({ name, className }) => {
-            const LucideIcon = lucide[name];
-            if (!LucideIcon) return null;
-            return <LucideIcon className={className} />;
-        };
+<body>
 
-        const App = () => {
-            const [activeSection, setActiveSection] = useState('home');
-            const [scrolled, setScrolled] = useState(false);
+<!-- NAVBAR -->
 
-            useEffect(() => {
-                const handleScroll = () => {
-                    setScrolled(window.scrollY > 50);
-                };
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
+<nav>
 
-            const scrollToSection = (id) => {
-                const element = document.getElementById(id);
-                if (element) {
-                    const offset = 80;
-                    const bodyRect = document.body.getBoundingClientRect().top;
-                    const elementRect = element.getBoundingClientRect().top;
-                    const elementPosition = elementRect - bodyRect;
-                    const offsetPosition = elementPosition - offset;
+<div class="logo">Zikrific Cafe</div>
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                    setActiveSection(id);
-                }
-            };
+<ul>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 
-            const NavItem = ({ id, label }) => (
-                <button
-                    onClick={() => scrollToSection(id)}
-                    className={`relative px-4 py-2 text-xs font-bold uppercase tracking-widest transition-all duration-500 group ${
-                        activeSection === id ? 'text-[#D4AF37]' : 'text-gray-400 hover:text-white'
-                    }`}
-                >
-                    {label}
-                    <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-[1px] bg-[#D4AF37] transition-all duration-500 ${activeSection === id ? 'w-full' : 'w-0 group-hover:w-1/2'}`} />
-                </button>
-            );
+</nav>
 
-            return (
-                <div className="min-h-screen text-white">
-                    {/* Background Subtle Gradient */}
-                    <div className="fixed inset-0 pointer-events-none z-0">
-                        <div className="absolute top-0 right-0 w-[60%] h-[60%] bg-[#D4AF37]/5 blur-[120px] rounded-full opacity-50" />
-                        <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-blue-900/10 blur-[120px] rounded-full opacity-30" />
-                    </div>
+<!-- HERO -->
 
-                    {/* Navigation */}
-                    <nav className={`fixed top-0 w-full z-50 transition-all duration-700 ${
-                        scrolled ? 'py-4 backdrop-blur-md bg-black/60 border-b border-white/5' : 'py-8 bg-transparent'
-                    }`}>
-                        <div className="container mx-auto px-8 flex justify-between items-center">
-                            <div className="flex items-center space-x-3 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-                                <div className="relative w-12 h-12 flex items-center justify-center">
-                                    <div className="absolute inset-0 border border-[#D4AF37]/40 rotate-45 transition-transform group-hover:rotate-90 duration-700" />
-                                    <span className="font-serif text-2xl font-light text-[#D4AF37]">E</span>
-                                </div>
-                                <div className="flex flex-col">
-                                    <span className="text-xl font-light tracking-[0.2em] leading-tight">E-ERA</span>
-                                    <span className="text-[10px] font-bold tracking-[0.4em] text-[#D4AF37] uppercase">Solutions</span>
-                                </div>
-                            </div>
+<div class="hero">
+<h1>Welcome to Zikrific Cafe</h1>
+</div>
 
-                            <div className="hidden lg:flex items-center space-x-4">
-                                <NavItem id="what-we-do" label="What We Do" />
-                                <NavItem id="how-we-do" label="How We Do" />
-                                <NavItem id="who-we-are" label="Who We Are" />
-                                <button className="ml-8 px-8 py-3 bg-[#D4AF37] hover:bg-[#b8972f] text-black text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-500 hover:tracking-[0.3em] shadow-xl shadow-[#D4AF37]/10">
-                                    Enquire Now
-                                </button>
-                            </div>
-                        </div>
-                    </nav>
+<!-- MENU -->
 
-                    {/* Hero Section */}
-                    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden">
-                        <div className="container mx-auto px-8 relative z-10 text-center">
-                            <div className="inline-block mb-8 overflow-hidden">
-                                <span className="block text-[10px] font-bold uppercase tracking-[0.5em] text-[#D4AF37] animate-slide-up">
-                                    Premium Real Estate Technology
-                                </span>
-                            </div>
-                            <h1 className="text-5xl md:text-7xl lg:text-9xl font-light leading-none mb-12 tracking-tighter">
-                                Architecting <br />
-                                <span className="italic font-serif opacity-90">Digital Excellence</span>
-                            </h1>
-                            <div className="max-w-2xl mx-auto border-t border-white/10 pt-12">
-                                <p className="text-gray-400 text-lg md:text-xl font-light leading-relaxed mb-12 font-sans">
-                                    E-ERA Tech Solutions delivers high-performance web architecture for the real estate elite. 
-                                    Premium results, delivered with disruptive market efficiency.
-                                </p>
-                                <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
-                                    <button 
-                                        onClick={() => scrollToSection('what-we-do')}
-                                        className="group flex items-center space-x-4 text-xs font-bold uppercase tracking-widest text-white hover:text-[#D4AF37] transition-colors"
-                                    >
-                                        <span>Our Portfolio</span>
-                                        <div className="w-12 h-[1px] bg-white/20 group-hover:bg-[#D4AF37] group-hover:w-16 transition-all duration-500" />
-                                    </button>
-                                    <div className="flex items-center text-xs font-bold tracking-widest text-gray-500 uppercase">
-                                        <Icon name="MapPin" className="w-4 h-4 mr-2 text-[#D4AF37]" /> Hyderabad, India
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#080808] to-transparent z-1" />
-                    </section>
+<section id="menu">
 
-                    {/* WHAT WE DO */}
-                    <section id="what-we-do" className="py-32 bg-[#0a0a0a] relative">
-                        <div className="container mx-auto px-8">
-                            <div className="max-w-4xl mb-24">
-                                <h2 className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.4em] mb-6">Expertise</h2>
-                                <h3 className="text-4xl md:text-6xl font-light mb-8">Specialized Solutions for <br />the Real Estate Sector.</h3>
-                                <p className="text-gray-500 text-xl font-light leading-relaxed font-sans">
-                                    We combine industry insights with advanced technology to build platforms that drive transactions and brand prestige.
-                                </p>
-                            </div>
+<h2 class="title">Our Menu</h2>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/5">
-                                {[
-                                    { icon: "Home", title: "Portfolio Sites", desc: "High-impact showcases for luxury listings with seamless media delivery." },
-                                    { icon: "Monitor", title: "Web Platforms", desc: "Enterprise-grade property management and booking engines." },
-                                    { icon: "Smartphone", title: "Agent Solutions", desc: "Interactive digital profiles and lead management automation." },
-                                    { icon: "Database", title: "Hosting & Security", desc: "Ultra-secure, scalable cloud infrastructure for sensitive data." },
-                                    { icon: "Zap", title: "Speed Optimization", desc: "Sub-second load times ensuring zero bounce rates." },
-                                    { icon: "TrendingDown", title: "Market Efficiency", desc: "Premium tech delivered at significantly lower-than-market pricing." }
-                                ].map((item, idx) => (
-                                    <div key={idx} className="group bg-[#080808] p-12 transition-all duration-700 hover:bg-[#0c0c0c]">
-                                        <div className="text-[#D4AF37] mb-8 transition-transform duration-700 group-hover:scale-110">
-                                            <Icon name={item.icon} className="w-8 h-8 font-light" />
-                                        </div>
-                                        <h4 className="text-xl font-light mb-4 tracking-tight">{item.title}</h4>
-                                        <p className="text-gray-500 text-sm leading-relaxed font-sans">
-                                            {item.desc}
-                                        </p>
-                                        <div className="mt-8 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
-                                            <button className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] flex items-center">
-                                                View More <Icon name="ArrowRight" className="ml-2 w-3 h-3" />
-                                            </button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
+<div class="menu-category">
 
-                    {/* HOW WE DO */}
-                    <section id="how-we-do" className="py-32 relative">
-                        <div className="container mx-auto px-8">
-                            <div className="flex flex-col lg:flex-row gap-20">
-                                <div className="lg:w-1/3">
-                                    <h2 className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.4em] mb-6">Methodology</h2>
-                                    <h3 className="text-4xl font-light mb-8 italic">The Path to <br />Digital Success.</h3>
-                                    <p className="text-gray-500 font-sans">
-                                        Our workflow is designed for clarity, speed, and exceptional quality, ensuring your vision is executed without friction.
-                                    </p>
-                                </div>
-                                <div className="lg:w-2/3 space-y-12">
-                                    {[
-                                        { step: '01', title: 'Consultation & Insight', desc: 'Understanding your business objectives and the competitive landscape of the Hyderabad market.' },
-                                        { step: '02', title: 'Architectural Design', desc: 'Crafting the blueprint using the Bento-grid and Glassmorphism design philosophies.' },
-                                        { step: '03', title: 'Precision Engineering', desc: 'Building your solution with clean, high-performance code and secure database structures.' },
-                                        { step: '04', title: 'Global Deployment', desc: 'Launching on world-class hosting infrastructure for maximum uptime and speed.' }
-                                    ].map((item, idx) => (
-                                        <div key={idx} className="flex gap-10 group cursor-default">
-                                            <div className="text-4xl font-light text-white/10 group-hover:text-[#D4AF37]/40 transition-colors duration-700 font-serif italic">
-                                                {item.step}
-                                            </div>
-                                            <div className="border-b border-white/5 pb-12 w-full">
-                                                <h4 className="text-xl font-light mb-4 tracking-wide">{item.title}</h4>
-                                                <p className="text-gray-500 font-sans max-w-xl">{item.desc}</p>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+<h3>Chai & Tea</h3>
 
-                    {/* WHO WE ARE */}
-                    <section id="who-we-are" className="py-32 bg-[#0a0a0a] overflow-hidden">
-                        <div className="container mx-auto px-8">
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
-                                <div className="relative group">
-                                    <div className="absolute -inset-4 border border-[#D4AF37]/20 group-hover:border-[#D4AF37]/40 transition-all duration-1000" />
-                                    <div className="relative aspect-[4/5] bg-gradient-to-br from-white/5 to-transparent flex flex-col justify-end p-12 overflow-hidden">
-                                        <div className="absolute top-0 right-0 p-12 text-[#D4AF37]/20">
-                                            <Icon name="Briefcase" className="w-48 h-48 -rotate-12" />
-                                        </div>
-                                        <div className="relative z-10">
-                                            <h4 className="text-5xl font-light mb-6 italic">Built on <br />Trust.</h4>
-                                            <div className="h-[2px] w-20 bg-[#D4AF37] mb-8" />
-                                            <p className="text-gray-300 font-sans leading-relaxed">
-                                                Established in Hyderabad, E-ERA Tech Solutions is the partnership of two visionary architects dedicated to the democratization of high-end real estate technology.
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+<div class="menu-grid">
 
-                                <div className="space-y-12">
-                                    <div>
-                                        <h2 className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.4em] mb-6">Our Values</h2>
-                                        <h3 className="text-4xl font-light mb-8">Uncompromising Quality. <br />Fairer Values.</h3>
-                                        <p className="text-gray-500 font-sans mb-12">
-                                            We believe that premium digital experiences shouldn't be reserved for the few. By eliminating the overhead of traditional agencies, we provide world-class tech for everyone.
-                                        </p>
-                                    </div>
+<div class="menu-item">Irani Chai <span class="price">₹20</span></div>
+<div class="menu-item">Special Chai <span class="price">₹30</span></div>
+<div class="menu-item">Ginger Chai <span class="price">₹30</span></div>
+<div class="menu-item">Lemon Tea <span class="price">₹30</span></div>
+<div class="menu-item">Sugar Free Tea <span class="price">₹30</span></div>
+<div class="menu-item">Fusion Tea Dips <span class="price">₹40</span></div>
+<div class="menu-item">Green Tea <span class="price">₹40</span></div>
+<div class="menu-item">Boost <span class="price">₹30</span></div>
+<div class="menu-item">Hot Milk <span class="price">₹30</span></div>
 
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                                        {[
-                                            { label: 'Integrity', text: 'Transparent pricing with no hidden costs.', icon: "ShieldCheck" },
-                                            { label: 'Agility', text: 'Fast-track development cycles.', icon: "Zap" },
-                                            { label: 'Innovation', text: 'Always at the edge of tech trends.', icon: "Layers" },
-                                            { label: 'Legacy', text: 'Built to scale as your business grows.', icon: "Globe" }
-                                        ].map((val, i) => (
-                                            <div key={i} className="space-y-3">
-                                                <div className="text-[#D4AF37]"><Icon name={val.icon} className="w-5 h-5" /></div>
-                                                <h5 className="font-bold text-xs uppercase tracking-widest">{val.label}</h5>
-                                                <p className="text-gray-500 text-xs font-sans">{val.text}</p>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+</div>
 
-                    {/* Footer */}
-                    <footer className="py-20 border-t border-white/5 bg-black">
-                        <div className="container mx-auto px-8">
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-20">
-                                <div className="md:col-span-2">
-                                    <div className="flex items-center space-x-3 mb-8">
-                                        <div className="relative w-10 h-10 border border-[#D4AF37]/40 rotate-45 flex items-center justify-center">
-                                            <span className="font-serif text-xl font-light text-[#D4AF37] -rotate-45">E</span>
-                                        </div>
-                                        <span className="text-xl font-light tracking-[0.2em]">E-ERA TECH</span>
-                                    </div>
-                                    <p className="text-gray-600 font-sans max-w-sm">
-                                        Premium digital craftsmanship for the real estate elite. Serving Hyderabad and beyond with excellence.
-                                    </p>
-                                </div>
-                                
-                                <div>
-                                    <h5 className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] mb-8">Contact</h5>
-                                    <ul className="space-y-4 font-sans text-sm text-gray-500">
-                                        <li className="hover:text-white transition-colors cursor-pointer flex items-center">
-                                            <Icon name="MessageSquare" className="w-4 h-4 mr-2 opacity-50" /> WhatsApp Direct
-                                        </li>
-                                        <li className="hover:text-white transition-colors cursor-pointer">
-                                            hello@e-era.tech
-                                        </li>
-                                        <li className="text-gray-700 italic">
-                                            Hyderabad, Telangana
-                                        </li>
-                                    </ul>
-                                </div>
+</div>
 
-                                <div>
-                                    <h5 className="text-[10px] font-bold uppercase tracking-widest text-white mb-8">Navigation</h5>
-                                    <ul className="space-y-4 font-sans text-sm text-gray-500">
-                                        <li onClick={() => scrollToSection('what-we-do')} className="hover:text-[#D4AF37] transition-colors cursor-pointer underline-offset-4 hover:underline">Expertise</li>
-                                        <li onClick={() => scrollToSection('how-we-do')} className="hover:text-[#D4AF37] transition-colors cursor-pointer underline-offset-4 hover:underline">Methodology</li>
-                                        <li onClick={() => scrollToSection('who-we-are')} className="hover:text-[#D4AF37] transition-colors cursor-pointer underline-offset-4 hover:underline">Philosophy</li>
-                                    </ul>
-                                </div>
-                            </div>
 
-                            <div className="flex flex-col md:flex-row justify-between items-center pt-12 border-t border-white/5 text-[10px] font-bold uppercase tracking-[0.3em] text-gray-700">
-                                <div>© 2026 E-ERA Tech Solutions. Excellence in Engineering.</div>
-                                <div className="mt-4 md:mt-0 flex space-x-8">
-                                    <a href="#" className="hover:text-white transition-colors">Privacy</a>
-                                    <a href="#" className="hover:text-white transition-colors">Terms</a>
-                                </div>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
-            );
-        };
+<div class="menu-category">
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+<h3>Coffee</h3>
+
+<div class="menu-grid">
+
+<div class="menu-item">Instant Coffee (S) <span class="price">₹30</span></div>
+<div class="menu-item">Instant Coffee (M) <span class="price">₹50</span></div>
+<div class="menu-item">Americano <span class="price">₹70</span></div>
+<div class="menu-item">Espresso <span class="price">₹70</span></div>
+<div class="menu-item">Cappuccino <span class="price">₹100</span></div>
+<div class="menu-item">Tonic Espresso <span class="price">₹150</span></div>
+<div class="menu-item">Red Bull Espresso <span class="price">₹180</span></div>
+<div class="menu-item">Coke Espresso <span class="price">₹99</span></div>
+<div class="menu-item">Flat White <span class="price">₹100</span></div>
+<div class="menu-item">Latte <span class="price">₹100</span></div>
+<div class="menu-item">Cold Coffee <span class="price">₹100</span></div>
+<div class="menu-item">Hot Chocolate <span class="price">₹100</span></div>
+<div class="menu-item">Spanish Latte <span class="price">₹100</span></div>
+<div class="menu-item">Iced Latte <span class="price">₹100</span></div>
+<div class="menu-item">Mocha <span class="price">₹100</span></div>
+
+</div>
+
+</div>
+
+
+<div class="menu-category">
+
+<h3>Mocktails & Shakes</h3>
+
+<div class="menu-grid">
+
+<div class="menu-item">Orange Fizz <span class="price">₹49</span></div>
+<div class="menu-item">Cranberry Twist <span class="price">₹49</span></div>
+<div class="menu-item">Spicy Guava <span class="price">₹49</span></div>
+<div class="menu-item">Mixed Fruit Mountain <span class="price">₹49</span></div>
+<div class="menu-item">Alphanso Mango Juice <span class="price">₹49</span></div>
+<div class="menu-item">Virgin Mojito <span class="price">₹49</span></div>
+<div class="menu-item">Masala Thums Up <span class="price">₹30</span></div>
+<div class="menu-item">Choco Brownie Shake <span class="price">₹100</span></div>
+<div class="menu-item">Butter Milk <span class="price">₹35</span></div>
+
+</div>
+
+</div>
+
+
+<div class="menu-category">
+
+<h3>Treats & Bites</h3>
+
+<div class="menu-grid">
+
+<div class="menu-item">Bun Muska <span class="price">₹40</span></div>
+<div class="menu-item">Malai Bun <span class="price">₹50</span></div>
+<div class="menu-item">Nutella Bun <span class="price">₹50</span></div>
+<div class="menu-item">Raspberry Bun <span class="price">₹50</span></div>
+<div class="menu-item">Biscoff Bun <span class="price">₹50</span></div>
+<div class="menu-item">Brownie <span class="price">₹60</span></div>
+<div class="menu-item">Donut <span class="price">₹50</span></div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<h2 class="title">Cafe Gallery</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836">
+<img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb">
+<img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814">
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<h2 class="title">Visit Us</h2>
+
+<div class="contact">
+
+<p>Zikrific Cafe</p>
+<p>Hyderabad</p>
+<p>Open: 8AM – 11PM</p>
+
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">Order on WhatsApp</a>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Zikrific Cafe
+
+</footer>
+
 </body>
 </html>
+```
