@@ -7,11 +7,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Restored Previous Typography: Inter & Playfair Display -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Brand Colors maintained */
             --brand-blue: #0077FF;
             --brand-teal: #00C49A;
             --brand-magenta: #C026D3;
@@ -21,7 +19,7 @@
         }
         
         body {
-            font-family: 'Inter', sans-serif; /* Restored body font */
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
@@ -30,7 +28,7 @@
         }
 
         h1, h2, h3, h4, .serif {
-            font-family: 'Playfair Display', serif; /* Restored headline font */
+            font-family: 'Playfair Display', serif;
             font-weight: 700;
             letter-spacing: -0.01em;
         }
@@ -53,11 +51,6 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .bg-brand-gradient {
-            background: var(--brand-gradient);
-        }
-
-        /* --- Premium Navigation --- */
         .glass-nav {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(25px);
@@ -80,110 +73,64 @@
         }
         .nav-link:hover::after { width: 100%; }
 
-        /* --- Reveal Animations --- */
         .reveal {
             opacity: 0; transform: translateY(40px);
             transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
-        /* --- Service Cards --- */
-        .service-card {
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            background: #fff;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        .service-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.1);
-        }
-        .svc-blue:hover { background: var(--brand-blue) !important; color: white !important; }
-        .svc-yellow:hover { background: #FFD600 !important; color: var(--brand-black) !important; }
-        .svc-green:hover { background: var(--brand-teal) !important; color: white !important; }
-        .svc-black:hover { background: var(--brand-black) !important; color: white !important; }
-        .service-card:hover h3, .service-card:hover p { color: white !important; }
-        .service-card.svc-yellow:hover h3, .service-card.svc-yellow:hover p { color: var(--brand-black) !important; }
-
-        /* --- Audience Section (Image Zoom + Black Shade) --- */
-        .aud-img-wrap {
-            position: relative;
-            border-radius: 2rem;
-            overflow: hidden;
-            aspect-ratio: 16/10;
-            background: #000;
-        }
-        .aud-img-wrap img {
+        /* --- Seamless Infinite Slider --- */
+        .testimonial-container {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-        }
-        .aud-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0);
-            transition: background 0.5s ease;
-            pointer-events: none;
-        }
-        .aud-card:hover img {
-            transform: scale(1.15);
-        }
-        .aud-card:hover .aud-overlay {
-            background: rgba(0, 0, 0, 0.4);
-        }
-        .gold-line {
-            width: 50px; height: 5px; background: var(--highlight-gold); margin-bottom: 1.5rem;
-        }
-
-        /* --- Banner Style --- */
-        .banner-box {
-            background: #0D2137;
-            border-radius: 2rem;
-            padding: 4rem 2rem;
-            text-align: center;
-            color: #fff;
-            box-shadow: 0 20px 50px rgba(13, 33, 55, 0.3);
-        }
-        .banner-accent {
-            color: #FDBB3B;
-            font-style: italic;
-            font-weight: 900;
-        }
-
-        /* --- Team Cards --- */
-        .team-card img {
-            filter: grayscale(100%);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .team-card:hover img {
-            filter: grayscale(0%) saturate(1.1);
-            transform: scale(1.1);
-        }
-        .steward-wrap {
             overflow: hidden;
-            border-radius: 2.5rem;
-            background: #f8fafc;
-            border: 2px solid transparent;
-            transition: all 0.5s ease;
+            position: relative;
+            padding: 4rem 0;
+            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         }
-        .team-card:hover .steward-wrap {
-            border-color: var(--brand-teal);
-            box-shadow: 0 25px 50px -12px rgba(0, 196, 154, 0.3);
-        }
-
-        /* --- Let's Connect Section --- */
-        .connect-gradient-bg {
-            background: radial-gradient(circle at top right, rgba(0, 119, 255, 0.05), transparent),
-                        radial-gradient(circle at bottom left, rgba(0, 196, 154, 0.05), transparent);
+        
+        .testimonial-track {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
         }
 
-        .floating {
-            animation: floating 4s ease-in-out infinite;
+        .testimonial-track:hover {
+            animation-play-state: paused;
         }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .testimonial-slide {
+            width: 400px;
+            padding: 0 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            border-color: var(--brand-blue);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 119, 255, 0.08);
+        }
+
+        .floating { animation: floating 4s ease-in-out infinite; }
         @keyframes floating {
-            0% { transform: translateY(0px); }
+            0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
         }
 
         #back-to-top {
@@ -199,6 +146,7 @@
         @media (max-width: 1024px) {
             body { cursor: auto; }
             #cursor, #cursor-follower { display: none; }
+            .testimonial-slide { width: 320px; }
         }
     </style>
 </head>
@@ -211,19 +159,19 @@
     <nav class="glass-nav fixed w-full z-[1000] px-6 py-4 md:px-12 transition-all">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-4 group cursor-pointer" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-                    <div class="flex flex-col">
+                <div class="flex flex-col">
                     <span class="text-xl font-bold tracking-tighter text-slate-900 uppercase leading-none" style="font-family: 'Poppins', sans-serif; font-weight: 900;">E-ERA TECH</span>
                     <span class="text-[9px] font-bold text-brand-blue tracking-widest uppercase">Web Solutions & Hosting</span>
                 </div>
             </div>
             
-            <a href="what-we-do.html" class="nav-link">What we do</a>
-<a href="how-we-do.html" class="nav-link">How we do</a>
-<a href="who-we-are.html" class="nav-link">Who we are</a>
+            <div class="hidden lg:flex space-x-12 items-center">
+                <a href="#services" class="nav-link">What we do</a>
+                <a href="#audience" class="nav-link">How we do</a>
+                <a href="#testimonials" class="nav-link">Testimonials</a>
                 <a href="#services" class="nav-link">Projects</a>
-                <a href="https://calendly.com/" target="_blank" class="bg-brand-gradient text-white px-8 py-3 rounded-xl font-bold hover:shadow-lg transition-all text-xs uppercase tracking-widest">
-                    Admin Login
-                </a>
+                <a href="#" class="nav-link">Blogs</a>
+                <a href="#lets-connect" class="nav-link">Contact</a>
             </div>
 
             <button class="lg:hidden text-slate-900" onclick="toggleMenu()">
@@ -233,14 +181,15 @@
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-[2000] flex flex-col items-center justify-center space-y-12 p-6">
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-[2000] flex flex-col items-center justify-center space-y-10 p-6 text-center">
         <button class="absolute top-8 right-8 text-slate-900" onclick="toggleMenu()">
             <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
-        <a href="#services" class="text-5xl font-black text-slate-900" onclick="toggleMenu()">Services</a>
-        <a href="#audience" class="text-5xl font-black text-slate-900" onclick="toggleMenu()">Audience</a>
-        <a href="#leadership" class="text-5xl font-black text-slate-900" onclick="toggleMenu()">Team</a>
-        <a href="https://calendly.com/" target="_blank" class="text-2xl font-bold text-brand-blue uppercase" onclick="toggleMenu()">Connect</a>
+        <a href="#services" class="text-4xl font-black text-slate-900 uppercase tracking-tighter" onclick="toggleMenu()">What we do</a>
+        <a href="#audience" class="text-4xl font-black text-slate-900 uppercase tracking-tighter" onclick="toggleMenu()">How we do</a>
+        <a href="#testimonials" class="text-4xl font-black text-slate-900 uppercase tracking-tighter" onclick="toggleMenu()">Testimonials</a>
+        <a href="#" class="text-4xl font-black text-slate-900 uppercase tracking-tighter" onclick="toggleMenu()">Blogs</a>
+        <a href="#lets-connect" class="text-2xl font-bold text-brand-blue uppercase tracking-widest" onclick="toggleMenu()">Contact Us</a>
     </div>
 
     <!-- Hero Section -->
@@ -266,7 +215,7 @@
             </div>
             
             <div class="lg:col-span-2 relative hidden lg:flex justify-end reveal active">
-                <div class="phone-mockup floating" style="border-color: var(--brand-black);">
+                <div class="phone-mockup floating" style="border: 12px solid var(--brand-black); border-radius: 3rem; box-shadow: 0 50px 100px -20px rgba(0,0,0,0.2); overflow: hidden; width: 320px; aspect-ratio: 9/19;">
                     <div class="h-full flex flex-col justify-between p-10 bg-white">
                         <div>
                             <img src="image_9bcd84.png" class="h-10 mb-8" alt="Icon">
@@ -329,94 +278,125 @@
         </div>
     </section>
 
-    <!-- Audience Section -->
-    <section id="audience" class="py-32 px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="gold-line"></div>
-            <h2 class="text-5xl md:text-7xl font-bold mb-20 text-slate-900">Whether you are a...</h2>
+    <!-- Infinite Testimonials Section -->
+    <section id="testimonials" class="py-40 px-6 bg-white">
+        <div class="max-w-7xl mx-auto text-center mb-20 reveal">
+            <div class="w-12 h-1 bg-highlight-gold mb-8 mx-auto"></div>
+            <h2 class="text-6xl md:text-8xl font-bold text-slate-900 uppercase leading-none mb-6">Market <span class="text-gradient">Echoes.</span></h2>
+            <p class="text-slate-400 uppercase tracking-widest text-sm">Real impact recorded from our global partners.</p>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
-                <!-- Young Professional -->
-                <div class="aud-card reveal">
-                    <div class="aud-img-wrap mb-8">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Young Professional">
-                        <div class="aud-overlay"></div>
+        <div class="testimonial-container reveal">
+            <div class="testimonial-track" id="testimonialTrack">
+                <!-- Set 1 -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <p class="text-slate-600 text-lg leading-relaxed italic mb-8">"EeraTech transformed our digital presence from a standard landing page to a high-converting ecosystem. Their attention to technical detail is unmatched."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" class="w-full h-full object-cover"></div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-slate-900">David Henderson</h4>
+                                <p class="text-[10px] font-bold uppercase text-brand-blue tracking-widest">CEO, Flux Capital</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="border-l-4 border-brand-blue pl-6">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Young professional</h3>
-                        <p class="text-slate-500 leading-relaxed text-sm">Launch your first high-performance digital footprint. We help you build a personal brand and portfolio that creates professional leverage for early-career dominance.</p>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <p class="text-slate-600 text-lg leading-relaxed italic mb-8">"The branding systems developed by the team gave our startup the professional edge we needed to secure our Series A funding."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop" class="w-full h-full object-cover"></div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-slate-900">Sarah Jenkins</h4>
+                                <p class="text-[10px] font-bold uppercase text-brand-teal tracking-widest">Founder, Bloom AI</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <p class="text-slate-600 text-lg leading-relaxed italic mb-8">"We migrated our legacy hosting to EeraTech's node architecture and saw an immediate 40% improvement in global load times."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" class="w-full h-full object-cover"></div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-slate-900">Marcus Thorne</h4>
+                                <p class="text-[10px] font-bold uppercase text-brand-magenta tracking-widest">CTO, Velo Systems</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <p class="text-slate-600 text-lg leading-relaxed italic mb-8">"Working with EeraTech feels like having an elite technical team in your own office. They solve problems before they even exist."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="w-full h-full object-cover"></div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-slate-900">Elena Rodriguez</h4>
+                                <p class="text-[10px] font-bold uppercase text-brand-blue tracking-widest">Director, Nexa</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Small Business Owner -->
-                <div class="aud-card reveal" style="transition-delay: 0.1s">
-                    <div class="aud-img-wrap mb-8">
-                        <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&q=80&w=800" alt="Small Business Owner">
-                        <div class="aud-overlay"></div>
-                    </div>
-                    <div class="border-l-4 border-brand-teal pl-6">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Small business owner</h3>
-                        <p class="text-slate-500 leading-relaxed text-sm">Build a lasting digital legacy. We plan your technical transition and growth, ensuring your business stays competitive and financially efficient in a digital-first economy.</p>
-                    </div>
-                </div>
-
-                <!-- Corporate / Scaling -->
-                <div class="aud-card reveal" style="transition-delay: 0.2s">
-                    <div class="aud-img-wrap mb-8">
-                        <img src="https://images.unsplash.com/photo-1516733725897-1aa73b87c8e8?auto=format&fit=crop&q=80&w=800" alt="Planning to scale">
-                        <div class="aud-overlay"></div>
-                    </div>
-                    <div class="border-l-4 border-brand-magenta pl-6">
-                        <h3 class="text-2xl font-bold text-slate-900 mb-4">Planning to scale</h3>
-                        <p class="text-slate-500 leading-relaxed text-sm">Expand with confidence. We architect reliable systems and high-converting channels, ensuring your enterprise handles growth without technical stress or identity dilution.</p>
+                <!-- Set 2 (Clones for Seamless Loop) -->
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <p class="text-slate-600 text-lg leading-relaxed italic mb-8">"EeraTech transformed our digital presence from a standard landing page to a high-converting ecosystem. Their attention to technical detail is unmatched."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop" class="w-full h-full object-cover"></div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-slate-900">David Henderson</h4>
+                                <p class="text-[10px] font-bold uppercase text-brand-blue tracking-widest">CEO, Flux Capital</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="banner-box reveal">
-                <h4 class="text-2xl md:text-3xl font-bold mb-4 opacity-90" style="font-family: 'Inter', sans-serif;">We've helped brands like yours build digital dominance with clarity and see success</h4>
-                <h2 class="text-4xl md:text-6xl font-bold banner-accent uppercase">so. much. sooner.</h2>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <p class="text-slate-600 text-lg leading-relaxed italic mb-8">"The branding systems developed by the team gave our startup the professional edge we needed to secure our Series A funding."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop" class="w-full h-full object-cover"></div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-slate-900">Sarah Jenkins</h4>
+                                <p class="text-[10px] font-bold uppercase text-brand-teal tracking-widest">Founder, Bloom AI</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <p class="text-slate-600 text-lg leading-relaxed italic mb-8">"We migrated our legacy hosting to EeraTech's node architecture and saw an immediate 40% improvement in global load times."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop" class="w-full h-full object-cover"></div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-slate-900">Marcus Thorne</h4>
+                                <p class="text-[10px] font-bold uppercase text-brand-magenta tracking-widest">CTO, Velo Systems</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-card">
+                        <p class="text-slate-600 text-lg leading-relaxed italic mb-8">"Working with EeraTech feels like having an elite technical team in your own office. They solve problems before they even exist."</p>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-14 h-14 rounded-full overflow-hidden bg-slate-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop" class="w-full h-full object-cover"></div>
+                            <div class="text-left">
+                                <h4 class="font-bold text-slate-900">Elena Rodriguez</h4>
+                                <p class="text-[10px] font-bold uppercase text-brand-blue tracking-widest">Director, Nexa</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Leadership Section -->
-    <section id="leadership" class="py-40 px-6 bg-slate-50/50">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-32 reveal">
-                <h2 class="text-6xl md:text-8xl font-bold text-slate-900 uppercase">The <span class="text-gradient">Stewards.</span></h2>
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-                <div class="team-card reveal">
-                    <div class="steward-wrap aspect-[4/5] mb-8"><img src="https://media.licdn.com/dms/image/v2/D4D03AQH4vrrnzJiQXA/profile-displayphoto-scale_100_100/B4DZwqI89PIcAc-/0/1770233517795?e=1778112000&v=beta&t=Nuoqxtl7jBODIekcHgmHZMSYQv_HMrz7RkG5lp5_J6w" alt="Alish" class="w-full h-full object-cover"></div>
-                    <h4 class="text-2xl font-bold text-slate-900 text-center uppercase mb-1" style="font-family: 'Inter', sans-serif;">Alish Panjvani</h4>
-                    <p class="text-[10px] font-black uppercase text-brand-blue text-center tracking-[0.3em]">Managing Principal</p>
-                </div>
-                <div class="team-card reveal" style="transition-delay: 0.1s">
-                    <div class="steward-wrap aspect-[4/5] mb-8"><img src="https://media.licdn.com/dms/image/v2/D5603AQHrPcH0DdqrDA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1726205798135?e=1778112000&v=beta&t=capPf8oyQ61TAHoQrBLd2-C-5rluFOd3I0JnzhYPHL0" alt="Renish" class="w-full h-full object-cover"></div>
-                    <h4 class="text-2xl font-bold text-slate-900 text-center uppercase mb-1" style="font-family: 'Inter', sans-serif;">Renish Patel</h4>
-                    <p class="text-[10px] font-black uppercase text-brand-blue text-center tracking-[0.3em]">Technical Founder</p>
-                </div>
-                <div class="team-card reveal" style="transition-delay: 0.2s">
-                    <div class="steward-wrap aspect-[4/5] mb-8"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Sneha" class="w-full h-full object-cover"></div>
-                    <h4 class="text-2xl font-bold text-slate-900 text-center uppercase mb-1" style="font-family: 'Inter', sans-serif;">Sneha Popatiya</h4>
-                    <p class="text-[10px] font-black uppercase text-brand-blue text-center tracking-[0.3em]">Head of Identity</p>
-                </div>
-                <div class="team-card reveal" style="transition-delay: 0.3s">
-                    <div class="steward-wrap aspect-[4/5] mb-8"><img src="https://media.licdn.com/dms/image/v2/D4E03AQGIeNLBAXcxfA/profile-displayphoto-scale_200_200/B4EZgImcNnGwAY-/0/1752490954053?e=1778112000&v=beta&t=aZ6jG8kdvvOlBbbzXH8DchDFHQvK60VdaGBw-E4dKZI" alt="Alvin" class="w-full h-full object-cover"></div>
-                    <h4 class="text-2xl font-bold text-slate-900 text-center uppercase mb-1" style="font-family: 'Inter', sans-serif;">Alvin Panjvani</h4>
-                    <p class="text-[10px] font-black uppercase text-brand-blue text-center tracking-[0.3em]">Technical Lead</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW Let's Connect Section -->
-    <section id="lets-connect" class="py-40 px-6 bg-white connect-gradient-bg border-t border-slate-50">
+    <!-- Connect Section -->
+    <section id="lets-connect" class="py-40 px-6 bg-white border-t border-slate-50">
         <div class="max-w-4xl mx-auto text-center reveal">
             <h2 class="text-6xl md:text-[5rem] font-bold text-slate-900 mb-10 leading-tight">Let's <span class="text-gradient">Connect.</span></h2>
             <p class="text-xl md:text-2xl text-slate-500 mb-16 font-light leading-relaxed">
-                Whether you're scaling a corporate empire or launching your first digital venture, our stewards are ready to engineer your dominance. Let's discuss your technical roadmap.
+                Whether you're scaling a corporate empire or launching your first digital venture, our stewards are ready to engineer your dominance.
             </p>
             <div class="flex justify-center">
                 <a href="https://calendly.com/" target="_blank" class="bg-brand-gradient text-white px-16 py-8 rounded-[2rem] font-black text-2xl hover:scale-105 transition-all shadow-[0_20px_50px_rgba(0,119,255,0.3)] flex items-center group">
@@ -433,8 +413,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-24">
                 <div class="space-y-10">
                     <div class="flex items-center space-x-3">
-                        <img src="image_9bcd84.png" alt="Logo" class="h-10">
-                        <span class="text-2xl font-black uppercase tracking-tighter" style="font-family: 'Poppins', sans-serif;">E-ERA TECH</span>
+                        <span class="text-2xl font-black uppercase tracking-tighter" style="font-family: 'Poppins', sans-serif; font-weight: 900;">E-ERA TECH</span>
                     </div>
                     <p class="text-slate-400 font-medium text-sm leading-loose">Pioneering digital infrastructures and iconic brand systems since inception.</p>
                 </div>
@@ -450,8 +429,9 @@
                     <h5 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300 mb-10">Network</h5>
                     <ul class="space-y-6 text-sm font-bold text-slate-800">
                         <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</a></li>
-                        <li><a href="#leadership">Team</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
                         <li><a href="https://calendly.com/" target="_blank">Consultation</a></li>
+                        <li><a href="https://calendly.com/" target="_blank" class="text-brand-magenta hover:opacity-80 transition-opacity">Admin Login</a></li>
                     </ul>
                 </div>
                 <div>
