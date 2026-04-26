@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EeraTech | Digital Transformation & Iconic Branding</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-blue: #0077FF;
+            --brand-teal: #00C49A;
+            --brand-magenta: #C026D3;
+            --brand-black: #1A1A1A;
+            --highlight-gold: #FDBB3B;
+            --brand-gradient: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-teal) 100%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            background-color: #ffffff;
+            color: var(--brand-black);
+            cursor: none;
+        }
+
+        h1, h2, h3, h4, .serif {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        /* --- Custom Cursor --- */
+        #cursor {
+            width: 8px; height: 8px; background: var(--brand-blue);
+            border-radius: 50%; position: fixed; pointer-events: none;
+            z-index: 10000; transition: transform 0.1s ease;
+        }
+        #cursor-follower {
+            width: 40px; height: 40px; border: 1px solid var(--brand-blue);
+            border-radius: 50%; position: fixed; pointer-events: none;
+            z-index: 9999; transition: transform 0.15s ease, width 0.3s, height 0.3s, background 0.3s;
+        }
+
+        .text-gradient {
+            background: var(--brand-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .bg-brand-gradient {
+            background: var(--brand-gradient);
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(0, 119, 255, 0.08);
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand-black);
+        }
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -6px; left: 50%; background: var(--brand-gradient);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* --- Form Elements --- */
+        .form-card {
+            background: #ffffff;
+            border-radius: 2.5rem;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .input-field {
+            width: 100%;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 1.25rem 1.5rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .input-field:focus {
+            border-color: var(--brand-blue);
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 119, 255, 0.05);
+        }
+
+        .reveal {
+            opacity: 0; transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .btn-cta {
+            background: var(--brand-gradient);
+            box-shadow: 0 10px 30px rgba(0, 119, 255, 0.3);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0, 119, 255, 0.4);
+            filter: brightness(1.1);
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 2rem; right: 2rem; z-index: 1000;
+            width: 3.5rem; height: 3.5rem; border-radius: 1rem;
+            background: var(--brand-blue); color: white;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; transition: all 0.3s;
+        }
+        #back-to-top.visible { opacity: 1; }
+
+        @media (max-width: 1024px) {
+            body { cursor: auto; }
+            #cursor, #cursor-follower { display: none; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden bg-slate-50/50">
+
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="glass-nav fixed w-full z-[100] px-6 py-4 md:px-12 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4 group cursor-pointer" onclick="window.location.href='/'">
+                <img src="image_9bcd84.png" alt="EeraTech Logo" class="h-10 transition-transform group-hover:scale-110">
+                <div class="flex flex-col">
+                    <span class="text-lg font-black tracking-tighter text-slate-900 uppercase leading-none">EeraTech</span>
+                    <span class="text-[10px] font-bold text-slate-400 tracking-widest uppercase">Digital Excellence</span>
+                </div>
+            </div>
+            
+            <div class="hidden lg:flex space-x-6 xl:space-x-8 items-center">
+                <a href="#what we do.html" class="nav-link text-slate-600 hover:text-slate-900 transition-colors">What We Do</a>
+                <a href="#how-we-do.html" class="nav-link text-slate-600 hover:text-slate-900 transition-colors">How We Do</a>
+                <a href="#who we are.html" class="nav-link text-slate-600 hover:text-slate-900 transition-colors">Who We Are</a>
+                <a href="#testimonials.html" class="nav-link text-slate-600 hover:text-slate-900 transition-colors">Testimonials</a>
+                <a href="#projects.html" class="nav-link text-slate-600 hover:text-slate-900 transition-colors">Projects</a>
+                <a href="#blogs.html" class="nav-link text-slate-600 hover:text-slate-900 transition-colors">Blogs</a>
+                <a href="#contact.html" class="bg-brand-gradient text-white px-6 py-2.5 rounded-xl font-bold hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm whitespace-nowrap">
+                    Book Now
+                </a>
+            </div>
+
+            <button class="lg:hidden text-slate-900" onclick="toggleMenu()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-white z-[2000] flex flex-col items-center justify-center space-y-12 p-6">
+        <button class="absolute top-8 right-8 text-slate-900" onclick="toggleMenu()">
+            <svg width="36" height="36" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+        <a href="#services" class="text-4xl font-black text-slate-900" onclick="toggleMenu()">What we do</a>
+        <a href="#audience" class="text-4xl font-black text-slate-900" onclick="toggleMenu()">How we do</a>
+        <a href="#testimonials" class="text-4xl font-black text-slate-900" onclick="toggleMenu()">Testimonials</a>
+        <a href="#lets-connect" class="text-4xl font-black text-brand-blue" onclick="toggleMenu()">Contact</a>
+    </div>
+
+    <!-- Main Content -->
+    <main class="pt-40 pb-24 px-6">
+        <div class="max-w-3xl mx-auto">
+            
+            <div class="text-center mb-16 reveal active">
+                <h1 class="text-5xl md:text-7xl text-slate-900 mb-6">Let's <span class="text-gradient italic">Connect.</span></h1>
+                <p class="text-slate-500 text-lg font-light leading-relaxed max-w-xl mx-auto">
+                    Transform your digital presence with E-ERA TECH. Fill out the form below to begin your consultation.
+                </p>
+            </div>
+
+            <div class="form-card p-8 md:p-14 reveal active">
+                <form id="projectForm" class="space-y-8">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Name -->
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Full Name</label>
+                            <input type="text" name="name" required class="input-field" placeholder="John Doe">
+                        </div>
+
+                        <!-- Company -->
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Company</label>
+                            <input type="text" name="company" required class="input-field" placeholder="Acme Corporation">
+                        </div>
+                    </div>
+
+                    <!-- Services Required Dropdown -->
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Services Required</label>
+                        <select name="services" required class="input-field appearance-none cursor-pointer">
+                            <option value="" disabled selected>Select a Service</option>
+                            <option value="web-dev">Web Design & Development</option>
+                            <option value="branding">Logo & Brand Identity</option>
+                            <option value="social">Social Media Marketing</option>
+                            <option value="seo">SEO Optimization</option>
+                            <option value="hosting">Enterprise Hosting</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Email -->
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Email Address</label>
+                            <input type="email" name="email" required class="input-field" placeholder="john@company.com">
+                        </div>
+
+                        <!-- Phone CTC -->
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Phone Number (CTC)</label>
+                            <input type="tel" name="phone" required class="input-field" placeholder="+91 00000 00000">
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="pt-6">
+                        <button type="submit" class="btn-cta w-full py-6 text-white rounded-2xl font-bold text-lg uppercase tracking-widest">
+                            Submit Inquiry
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- Success Message -->
+                <div id="successMessage" class="hidden text-center py-10">
+                    <div class="w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8">
+                        <svg width="40" height="40" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                    </div>
+                    <h3 class="text-3xl font-bold text-slate-900 mb-4">Transmission Received</h3>
+                    <p class="text-slate-500 leading-relaxed">Your requirements are being reviewed. A steward will contact you shortly.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact-footer" class="bg-white pt-32 pb-12 px-6 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-24">
+                <div class="space-y-10">
+                    <div class="flex items-center space-x-3">
+                        <span class="text-2xl font-black uppercase tracking-tighter" style="font-family: 'Poppins', sans-serif; font-weight: 900;">E-ERA TECH</span>
+                    </div>
+                    <p class="text-slate-400 font-medium text-sm leading-loose">Pioneering digital infrastructures and iconic brand systems since inception.</p>
+                </div>
+                <div>
+                    <h5 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300 mb-10">Solutions</h5>
+                    <ul class="space-y-6 text-sm font-bold text-slate-800">
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Web Architecture</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Identity Systems</a></li>
+                        <li><a href="#" class="hover:text-brand-blue transition-colors">Cloud Hosting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300 mb-10">Network</h5>
+                    <ul class="space-y-6 text-sm font-bold text-slate-800">
+                        <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="hover:text-brand-blue transition-colors">Home</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="https://calendly.com/" target="_blank" class="hover:text-brand-blue transition-colors">Consultation</a></li>
+                        <li><a href="https://calendly.com/" target="_blank" class="text-brand-magenta hover:opacity-80 transition-opacity">Admin Login</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300 mb-10">Contact</h5>
+                    <ul class="space-y-4 text-sm font-bold text-slate-800">
+                        <li class="font-medium text-slate-500">Hyderabad, India</li>
+                        <li class="font-medium text-slate-500">+91 82009 27310</li>
+                        <li class="font-medium text-slate-500">info@eeratech.in</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pt-12 border-t border-slate-100 text-center">
+                <p class="text-[10px] font-black uppercase text-slate-300 tracking-[0.5em]">&copy; 2026 E-ERA TECH. EXCELLENCE BY DESIGN.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a id="back-to-top" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg>
+    </a>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
+            follower.style.transform = `translate3d(${e.clientX - 20}px, ${e.clientY - 20}px, 0)`;
+        });
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        }
+
+        const reveal = () => {
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) el.classList.add("active");
+            });
+        };
+
+        window.addEventListener("scroll", reveal);
+        window.addEventListener("scroll", () => {
+            const btt = document.getElementById('back-to-top');
+            if (window.scrollY > 500) btt.classList.add('visible');
+            else btt.classList.remove('visible');
+        });
+
+        const form = document.getElementById('projectForm');
+        const successMessage = document.getElementById('successMessage');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            form.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+        });
+
+        reveal();
+    </script>
+</body>
+</html>
