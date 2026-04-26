@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EeraTech | Digital Transformation & Iconic Branding</title>
+    <title>Process | How We Work - E-ERA TECH</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Restored Previous Typography: Inter & Playfair Display -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <!-- Added Poppins for the logo and UI elements -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Brand Colors maintained */
             --brand-blue: #0077FF;
             --brand-teal: #00C49A;
-            --brand-magenta: #C026D3;
             --brand-black: #1A1A1A;
             --highlight-gold: #FDBB3B;
+            --brand-magenta: #C026D3;
             --brand-gradient: linear-gradient(135deg, var(--brand-blue) 0%, var(--brand-teal) 100%);
         }
         
         body {
-            font-family: 'Inter', sans-serif; /* Restored body font */
+            font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
@@ -29,10 +28,48 @@
             cursor: none;
         }
 
-        h1, h2, h3, h4, .serif {
-            font-family: 'Playfair Display', serif; /* Restored headline font */
+        h1, h2, h3, .serif { 
+            font-family: 'Playfair Display', serif; 
             font-weight: 700;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
+        }
+
+        /* --- Navigation Styles --- */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid rgba(0, 119, 255, 0.08);
+        }
+
+        .nav-link {
+            position: relative;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--brand-black);
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -6px; left: 50%; background: var(--brand-gradient);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        .cta-primary {
+            background: var(--brand-blue); /* Vibrant Brand Blue */
+            color: white;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 4px 15px rgba(0, 119, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .cta-primary:hover {
+            transform: translateY(-2px) scale(1.05);
+            background: #0066DD; /* Slightly deeper blue for hover vibe */
+            box-shadow: 0 12px 30px rgba(0, 119, 255, 0.35);
         }
 
         /* --- Custom Cursor --- */
@@ -44,7 +81,7 @@
         #cursor-follower {
             width: 40px; height: 40px; border: 1px solid var(--brand-blue);
             border-radius: 50%; position: fixed; pointer-events: none;
-            z-index: 9999; transition: transform 0.15s ease, width 0.3s, height 0.3s, background 0.3s;
+            z-index: 9999; transition: transform 0.15s ease;
         }
 
         .text-gradient {
@@ -53,314 +90,424 @@
             -webkit-text-fill-color: transparent;
         }
 
-        .bg-brand-gradient {
-            background: var(--brand-gradient);
-        }
-
-        /* --- Premium Navigation --- */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(25px);
-            border-bottom: 1px solid rgba(0, 119, 255, 0.08);
-        }
-
-        .nav-link {
-            position: relative;
-            font-weight: 600;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--brand-black);
-        }
-        .nav-link::after {
-            content: ''; position: absolute; width: 0; height: 2px;
-            bottom: -6px; left: 50%; background: var(--brand-gradient);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        /* --- Timeline Progress Line --- */
+        .process-line-container {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(0, 119, 255, 0.05);
             transform: translateX(-50%);
         }
-        .nav-link:hover::after { width: 100%; }
-
-        /* --- Reveal Animations --- */
-        .reveal {
-            opacity: 0; transform: translateY(40px);
-            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* --- Service Cards --- */
-        .service-card {
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-            background: #fff;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
-        .service-card:hover {
-            transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.1);
-        }
-        .svc-blue:hover { background: var(--brand-blue) !important; color: white !important; }
-        .svc-yellow:hover { background: #FFD600 !important; color: var(--brand-black) !important; }
-        .svc-green:hover { background: var(--brand-teal) !important; color: white !important; }
-        .svc-black:hover { background: var(--brand-black) !important; color: white !important; }
-        .service-card:hover h3, .service-card:hover p { color: white !important; }
-        .service-card.svc-yellow:hover h3, .service-card.svc-yellow:hover p { color: var(--brand-black) !important; }
-
-        /* --- Audience Section (Image Zoom + Black Shade) --- */
-        .aud-img-wrap {
-            position: relative;
-            border-radius: 2rem;
-            overflow: hidden;
-            aspect-ratio: 16/10;
-            background: #000;
-        }
-        .aud-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease;
-        }
-        .aud-overlay {
+        .process-progress {
             position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0);
-            transition: background 0.5s ease;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: var(--brand-gradient);
+            transition: height 0.1s linear;
+        }
+
+        /* --- Glass Cards --- */
+        .process-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 119, 255, 0.08);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            z-index: 10;
+        }
+        .process-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--brand-teal);
+            box-shadow: 0 40px 80px -20px rgba(0, 196, 154, 0.15);
+        }
+
+        .step-number {
+            font-size: 10rem;
+            line-height: 1;
+            opacity: 0.12;
+            position: absolute;
+            top: -30px; 
+            right: 20px;
+            font-weight: 900;
+            font-family: 'Inter', sans-serif;
             pointer-events: none;
         }
-        .aud-card:hover img {
-            transform: scale(1.15);
-        }
-        .aud-card:hover .aud-overlay {
-            background: rgba(0, 0, 0, 0.4);
-        }
-        .gold-line {
-            width: 50px; height: 5px; background: var(--highlight-gold); margin-bottom: 1.5rem;
-        }
 
-        /* --- Banner Style --- */
-        .banner-box {
-            background: #0D2137;
-            border-radius: 2rem;
-            padding: 4rem 2rem;
-            text-align: center;
-            color: #fff;
-            box-shadow: 0 20px 50px rgba(13, 33, 55, 0.3);
-        }
-        .banner-accent {
-            color: #FDBB3B;
-            font-style: italic;
-            font-weight: 900;
-        }
-
-        /* --- Team Cards --- */
-        .team-card img {
-            filter: grayscale(100%);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .team-card:hover img {
-            filter: grayscale(0%) saturate(1.1);
-            transform: scale(1.1);
-        }
-        .steward-wrap {
-            overflow: hidden;
-            border-radius: 2.5rem;
-            background: #f8fafc;
-            border: 2px solid transparent;
+        /* --- Project CTA Hover --- */
+        .project-cta-box {
             transition: all 0.5s ease;
+            background: #0D2137;
         }
-        .team-card:hover .steward-wrap {
-            border-color: var(--brand-teal);
-            box-shadow: 0 25px 50px -12px rgba(0, 196, 154, 0.3);
-        }
-
-        /* --- Let's Connect Section --- */
-        .connect-gradient-bg {
-            background: radial-gradient(circle at top right, rgba(0, 119, 255, 0.05), transparent),
-                        radial-gradient(circle at bottom left, rgba(0, 196, 154, 0.05), transparent);
+        .project-cta-box:hover {
+            background: #152d48;
+            transform: scale(1.02);
         }
 
-        .floating {
-            animation: floating 4s ease-in-out infinite;
-        }
-        @keyframes floating {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-            100% { transform: translateY(0px); }
-        }
+        /* --- Animations --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
+        /* --- Back to Top --- */
         #back-to-top {
             position: fixed;
             bottom: 2rem; right: 2rem; z-index: 1000;
             width: 3.5rem; height: 3.5rem; border-radius: 1rem;
             background: var(--brand-blue); color: white;
             display: flex; align-items: center; justify-content: center;
-            opacity: 0; transition: all 0.3s;
+            opacity: 0; pointer-events: none; transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 119, 255, 0.3);
         }
-        #back-to-top.visible { opacity: 1; }
+        #back-to-top.visible { opacity: 1; pointer-events: auto; }
+
+        .blob {
+            position: absolute;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(0, 119, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(40px);
+        }
 
         @media (max-width: 1024px) {
-            body { cursor: auto; }
             #cursor, #cursor-follower { display: none; }
+            body { cursor: auto; }
+            .process-line-container { left: 20px; transform: none; }
+            .step-number { font-size: 6rem; top: 0; opacity: 0.1; }
         }
     </style>
 </head>
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden bg-slate-50/50">
 
     <div id="cursor"></div>
     <div id="cursor-follower"></div>
-  <!-- Navigation -->
+
+    <!-- Navigation -->
     <nav class="glass-nav fixed w-full z-[1000] px-6 py-4 md:px-12 transition-all">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo Section -->
             <div class="flex items-center space-x-4 group cursor-pointer" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-                    <div class="flex flex-col">
+                <img src="image_9bcd84.png" alt="EeraTech Logo" class="h-10 transition-all group-hover:scale-110">
+                <div class="flex flex-col">
                     <span class="text-xl font-bold tracking-tighter text-slate-900 uppercase leading-none" style="font-family: 'Poppins', sans-serif; font-weight: 900;">E-ERA TECH</span>
                     <span class="text-[9px] font-bold text-brand-blue tracking-widest uppercase">Web Solutions & Hosting</span>
                 </div>
             </div>
             
-            <a href="what-we-do.html" class="nav-link">What we do</a>
-<a href="how-we-do.html" class="nav-link">How we do</a>
-<a href="who-we-are.html" class="nav-link">Who we are</a>
-                <a href="#services" class="nav-link">Projects</a>
-                <a href="https://calendly.com/" target="_blank" class="bg-brand-gradient text-white px-8 py-3 rounded-xl font-bold hover:shadow-lg transition-all text-xs uppercase tracking-widest">
-                    Admin Login
+            <!-- Desktop Links -->
+            <div class="hidden lg:flex space-x-10 items-center">
+                <a href="what we do.html" class="nav-link">What we do</a>
+                <a href="how we do.html" class="nav-link text-brand-blue">How we do</a>
+                <a href="#who we are.html" class="nav-link">Who we are</a>
+                <a href="#Testimonials.html" class="nav-link">Testimonials</a>
+                <a href="#Projects.html" class="nav-link">Projects</a>
+                <a href="#Bolgs.html" class="nav-link">Blogs</a>
+                <a href="#lets-connect" class="cta-primary px-5 py-2.5 rounded-lg font-bold text-[11px] uppercase tracking-wider">
+                    Book Now
                 </a>
             </div>
 
+            <!-- Mobile Toggle Button -->
             <button class="lg:hidden text-slate-900" onclick="toggleMenu()">
-                <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M4 6h16M4 12h16m-7 6h7" /></svg>
+                <svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <path d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
             </button>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="min-h-screen flex items-center relative overflow-hidden pt-20">
-        <div class="absolute top-0 right-0 w-2/3 h-full opacity-10 pointer-events-none float-anim">
-            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <path fill="#0077FF" d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.7,-31.4,87.1,-15.7,85.8,-0.7C84.6,14.3,78.6,28.6,69.8,40.7C61.1,52.8,49.5,62.7,36.5,69.5C23.6,76.3,9.2,79.9,-4.8,88.2C-18.9,96.5,-37.8,109.4,-51.1,104.2C-64.4,99,-72.1,75.7,-78.3,57.1C-84.5,38.5,-89.2,24.5,-90.6,10.2C-92,-4.2,-90.1,-18.8,-83.4,-31.2C-76.7,-43.6,-65.2,-53.7,-52.3,-61.2C-39.4,-68.7,-25.1,-73.6,-10.2,-75.4C4.7,-77.2,19.4,-75.9,44.7,-76.4Z" transform="translate(100 100)" />
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[2000] flex flex-col items-center justify-center space-y-8 p-6 opacity-0 pointer-events-none transition-all duration-300">
+        <button class="absolute top-8 right-8 text-slate-900" onclick="toggleMenu()">
+            <svg width="32" height="32" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path d="M6 18L18 6M6 6l12 12" />
             </svg>
-        </div>
+        </button>
+        <a href="what-we-do.html" class="text-3xl font-black text-slate-900 uppercase" onclick="toggleMenu()">What we do</a>
+        <a href="how-we-do.html" class="text-3xl font-black text-brand-blue uppercase" onclick="toggleMenu()">How we do</a>
+        <a href="#who-we-are" class="text-3xl font-black text-slate-900 uppercase" onclick="toggleMenu()">Who we are</a>
+        <a href="#testimonials" class="text-3xl font-black text-slate-900 uppercase" onclick="toggleMenu()">Testimonials</a>
+        <a href="#services" class="text-3xl font-black text-slate-900 uppercase" onclick="toggleMenu()">Projects</a>
+        <a href="#" class="text-3xl font-black text-slate-900 uppercase" onclick="toggleMenu()">Blogs</a>
+        <button onclick="toggleMenu(); window.location.href='#lets-connect'" class="text-2xl font-bold text-[#0077FF] uppercase border-b-2 border-[#0077FF] pb-2">Book Now</button>
+    </div>
 
-        <div class="max-w-7xl mx-auto px-8 relative z-10">
-            <div class="max-w-4xl">
-                <p class="text-brand-teal font-bold uppercase tracking-[0.5em] text-[10px] mb-6 flex items-center">
-                    <span class="w-12 h-[1px] bg-brand-teal mr-4"></span> Defining the Future
-                </p>
-                <h1 class="text-7xl md:text-9xl font-bold leading-[0.9] mb-10 tracking-tight">
-                    Premium <br> 
-                    <span class="italic text-brand-gradient">Digital</span> <br>
-                    Craftsmanship.
-                </h1>
-                <div class="flex flex-col md:flex-row items-center gap-8">
-                    <p class="text-slate-400 text-lg leading-relaxed max-w-md">
-                        E-ERA TECH specializes in high-end design, development, and strategic digital growth for brands that demand excellence.
-                    </p>
-                    <div class="flex gap-4">
-                        <div class="h-16 w-16 rounded-full border border-white/10 flex items-center justify-center hover:bg-brand-blue transition-all cursor-pointer">
-                            <i class="fas fa-play text-xs"></i>
-                        </div>
-                        <span class="self-center text-[10px] font-bold uppercase tracking-widest text-highlight-gold">Watch Showreel</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Detailed Services Section (Screenshot Based Layout) -->
-    <section id="services" class="py-20 bg-deep-black">
-        <div class="max-w-7xl mx-auto px-8">
-            
-            <!-- Service 1: Design & Development (Image Left) -->
-            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32 reveal">
-                <div class="w-full lg:w-1/2 overflow-hidden rounded-sm border border-white/5 aspect-[4/3] bg-slate-900">
-                    <div class="w-full h-full grayscale-hover flex items-center justify-center bg-slate-800">
-                        <i class="fas fa-code text-6xl opacity-10"></i>
-                    </div>
-                </div>
-                <div class="w-full lg:w-1/2">
-                    <h2 class="text-5xl font-bold mb-2">Design & <br>Development</h2>
-                    <p class="sub-header-gold">Innovate. Build. Scale. Built into every digital solution.</p>
-                    <div class="gold-divider"></div>
-                    <p class="text-slate-400 text-sm leading-loose mb-6">
-                        Digital success isn't about code; it's about creating seamless, high-performance experiences. We help you balance aesthetic beauty with functional complexity, ensuring your platform is scalable, secure, and ready for growth.
-                    </p>
-                    <p class="text-slate-500 text-sm leading-loose">
-                        See your digital future before it happens. Our development framework builds a clear, visual roadmap for the next 5 to 10 years, helping you pivot and stay on track as technology evolves. We stress-test architectures and explore edge-case scenarios to give you a complete picture of possibilities.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service 2: Logo & Branding (Image Right) -->
-            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 mb-32 reveal">
-                <div class="w-full lg:w-1/2 overflow-hidden rounded-sm border border-white/5 aspect-[4/3] bg-slate-900">
-                    <div class="w-full h-full grayscale-hover flex items-center justify-center bg-slate-800">
-                        <i class="fas fa-bezier-curve text-6xl opacity-10"></i>
-                    </div>
-                </div>
-                <div class="w-full lg:w-1/2">
-                    <h2 class="text-5xl font-bold mb-2">Logo & <br>Branding</h2>
-                    <p class="sub-header-gold">Identity. Authority. Influence.</p>
-                    <div class="gold-divider"></div>
-                    <p class="text-slate-400 text-sm leading-loose mb-6">
-                        Your brand identity should work for you, not the other way around. We help you take control by establishing a visual language that commands authority, inspires trust, and creates an instant connection with your target audience.
-                    </p>
-                    <p class="text-slate-500 text-sm leading-loose">
-                        Clarity is where confident branding begins, and that's exactly what we bring. Our design tools help you visualize your brand's impact across all touchpoints—from mobile icons to global billboards—keeping your message unified and powerful as you move forward.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service 3: Social Media (Image Left) -->
-            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32 reveal">
-                <div class="w-full lg:w-1/2 overflow-hidden rounded-sm border border-white/5 aspect-[4/3] bg-slate-900">
-                    <div class="w-full h-full grayscale-hover flex items-center justify-center bg-slate-800">
-                        <i class="fas fa-share-nodes text-6xl opacity-10"></i>
-                    </div>
-                </div>
-                <div class="w-full lg:w-1/2">
-                    <h2 class="text-5xl font-bold mb-2">Social Media <br>Management</h2>
-                    <p class="sub-header-gold">Engage. Manage. Grow it.</p>
-                    <div class="gold-divider"></div>
-                    <p class="text-slate-400 text-sm leading-loose mb-6">
-                        Social influence isn't about luck; it's about making smart, strategic content choices. We help you manage your presence, strengthen your digital community, and create a narrative that moves with your brand through every stage of its lifecycle.
-                    </p>
-                    <p class="text-slate-500 text-sm leading-loose">
-                        With E-ERA TECH, you gain real-time visibility across your entire social ecosystem. We analyze trends, predict shifts, and explore content scenarios that ensure you are always prepared to stay relevant and lead the conversation.
-                    </p>
-                </div>
-            </div>
-
-            <!-- Service 4: SEO Strategy (Image Right) -->
-            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 reveal">
-                <div class="w-full lg:w-1/2 overflow-hidden rounded-sm border border-white/5 aspect-[4/3] bg-slate-900">
-                    <div class="w-full h-full grayscale-hover flex items-center justify-center bg-slate-800">
-                        <i class="fas fa-magnifying-glass-chart text-6xl opacity-10"></i>
-                    </div>
-                </div>
-                <div class="w-full lg:w-1/2">
-                    <h2 class="text-5xl font-bold mb-2">SEO & Search <br>Strategy</h2>
-                    <p class="sub-header-gold">Visibility. Performance. Dominance.</p>
-                    <div class="gold-divider"></div>
-                    <p class="text-slate-400 text-sm leading-loose mb-6">
-                        Visibility is the bridge between a vision and its reality. We optimize your organic performance by aligning your content with search intent and navigating complex algorithm shifts, ensuring you are always the first choice for your customers.
-                    </p>
-                    <p class="text-slate-500 text-sm leading-loose">
-                        Our SEO modelling tools build a clear data-backed roadmap for long-term growth. We stress-test keywords, analyze competitor shortfalls, and keep you informed and prepared to capture market share with absolute confidence.
-                    </p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- NEW Let's Connect Section -->
-    <section id="lets-connect" class="py-40 px-6 bg-white connect-gradient-bg border-t border-slate-50">
-        <div class="max-w-4xl mx-auto text-center reveal">
-            <h2 class="text-6xl md:text-[5rem] font-bold text-slate-900 mb-10 leading-tight">Let's <span class="text-gradient">Connect.</span></h2>
-            <p class="text-xl md:text-2xl text-slate-500 mb-16 font-light leading-relaxed">
-                Whether you're scaling a corporate empire or launching your first digital venture, our stewards are ready to engineer your dominance. Let's discuss your technical roadmap.
+    <!-- Hero Section -->
+    <section class="pt-52 pb-32 px-8 relative overflow-hidden">
+        <div class="blob top-[-10%] right-[-10%]"></div>
+        <div class="max-w-7xl mx-auto text-center">
+            <p class="text-brand-teal font-extrabold uppercase tracking-[0.5em] text-[11px] mb-8 reveal">The Methodology</p>
+            <h1 class="text-6xl md:text-[7rem] leading-[0.9] mb-12 reveal">
+                How We <span class="italic font-normal text-gradient">Work.</span>
+            </h1>
+            <p class="max-w-4xl mx-auto text-slate-900 text-lg md:text-2xl font-semibold leading-relaxed mb-8 reveal">
+                A structured, transparent process designed to deliver high-performance digital solutions—without confusion, delays, or guesswork.
             </p>
+            <p class="max-w-2xl mx-auto text-slate-500 text-base md:text-lg font-light leading-relaxed reveal">
+                We don’t believe in random execution. Every project follows a clear, strategic process to ensure quality, speed, and measurable results. From understanding your vision to scaling your digital presence, we handle everything with precision.
+            </p>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="relative py-20 px-8 bg-slate-50/50">
+        <div class="process-line-container">
+            <div class="process-progress" id="scroll-progress"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto space-y-40 relative">
+            
+            <!-- Step 1: Discovery -->
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 reveal">
+                <div class="w-full lg:w-1/2 lg:text-right order-2 lg:order-1">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-blue-600 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-md shadow-blue-200">Step 01</div>
+                    <h2 class="text-4xl md:text-5xl mb-8">Understanding Before Building</h2>
+                    <p class="text-slate-500 leading-loose mb-8 text-sm md:text-base">
+                        We begin by deeply understanding your business, goals, target audience, and current challenges. This phase helps us identify what actually matters—so we don’t just build something that looks good, but something that works.
+                    </p>
+                    <div class="flex flex-wrap gap-3 lg:justify-end">
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Business analysis</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Competitor research</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Audience understanding</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Goal setting</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div class="process-card p-10 md:p-16 rounded-[3rem]">
+                        <span class="step-number text-brand-blue">01</span>
+                        <div class="w-20 h-20 rounded-2xl bg-brand-blue/10 flex items-center justify-center mb-10">
+                            <svg class="w-10 h-10 text-brand-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Discovery Phase</h3>
+                        <p class="text-slate-500 font-medium text-sm italic">"Clarifying the mission."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Strategy -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 reveal">
+                <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-emerald-500 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-md shadow-emerald-200">Step 02</div>
+                    <h2 class="text-4xl md:text-5xl mb-8">Planning for Performance</h2>
+                    <p class="text-slate-500 leading-loose mb-8 text-sm md:text-base">
+                        Based on our insights, we create a clear strategy covering design, structure, and growth approach. Every decision is intentional—focused on conversions, scalability, and long-term success.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Website structure (sitemap)</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">User experience flow</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Branding direction</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Growth strategy</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div class="process-card p-10 md:p-16 rounded-[3rem]">
+                        <span class="step-number text-brand-teal">02</span>
+                        <div class="w-20 h-20 rounded-2xl bg-brand-teal/10 flex items-center justify-center mb-10">
+                            <svg class="w-10 h-10 text-brand-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Strategic Mapping</h3>
+                        <p class="text-slate-500 font-medium text-sm italic">"Intentionality in every detail."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Design -->
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 reveal">
+                <div class="w-full lg:w-1/2 lg:text-right order-2 lg:order-1">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-slate-900 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-md shadow-slate-300">Step 03</div>
+                    <h2 class="text-4xl md:text-5xl mb-8">Design That Speaks and Converts</h2>
+                    <p class="text-slate-500 leading-loose mb-8 text-sm md:text-base">
+                        We design visually powerful interfaces that reflect your brand and guide users toward action. Our focus is not just aesthetics—but clarity, engagement, and trust.
+                    </p>
+                    <div class="flex flex-wrap gap-3 lg:justify-end">
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">UI/UX design</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Wireframes & prototypes</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Brand consistency</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">User-focused layouts</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div class="process-card p-10 md:p-16 rounded-[3rem]">
+                        <span class="step-number text-slate-900">03</span>
+                        <div class="w-20 h-20 rounded-2xl bg-slate-900/10 flex items-center justify-center mb-10">
+                            <svg class="w-10 h-10 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.828 2.828a2 2 0 010 2.828l-8.486 8.486L5 19l1.414-1.414 1.414-1.414"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Visual Engineering</h3>
+                        <p class="text-slate-500 font-medium text-sm italic">"Aesthetics with impact."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Development -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 reveal">
+                <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-blue-700 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-md shadow-blue-200">Step 04</div>
+                    <h2 class="text-4xl md:text-5xl mb-8">Building High-Performance Systems</h2>
+                    <p class="text-slate-500 leading-loose mb-8 text-sm md:text-base">
+                        We turn designs into fast, responsive, and scalable digital platforms using modern technologies. Everything is optimized for speed, performance, and future growth.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Clean, scalable code</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Mobile responsiveness</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Fast loading speed</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Backend integration</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div class="process-card p-10 md:p-16 rounded-[3rem]">
+                        <span class="step-number text-blue-600">04</span>
+                        <div class="w-20 h-20 rounded-2xl bg-blue-600/10 flex items-center justify-center mb-10">
+                            <svg class="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Core Development</h3>
+                        <p class="text-slate-500 font-medium text-sm italic">"Precision code, ultimate speed."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Testing & Launch -->
+            <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 reveal">
+                <div class="w-full lg:w-1/2 lg:text-right order-2 lg:order-1">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-brand-teal text-white text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-md shadow-teal-100">Step 05</div>
+                    <h2 class="text-4xl md:text-5xl mb-8">Precision Before Go-Live</h2>
+                    <p class="text-slate-500 leading-loose mb-8 text-sm md:text-base">
+                        Before launch, we rigorously test everything to ensure a smooth and error-free experience. Once approved, we deploy your platform with full confidence.
+                    </p>
+                    <div class="flex flex-wrap gap-3 lg:justify-end">
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Performance Testing</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Responsiveness Checks</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Functionality QA</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">User experience audit</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div class="process-card p-10 md:p-16 rounded-[3rem]">
+                        <span class="step-number text-teal-600">05</span>
+                        <div class="w-20 h-20 rounded-2xl bg-teal-600/10 flex items-center justify-center mb-10">
+                            <svg class="w-10 h-10 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Quality Assurance</h3>
+                        <p class="text-slate-500 font-medium text-sm italic">"Rigorously tested for perfection."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Growth & Optimization -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-16 lg:gap-24 reveal">
+                <div class="w-full lg:w-1/2 order-2 lg:order-1">
+                    <div class="inline-block px-4 py-1.5 rounded-full bg-slate-800 text-white text-[10px] font-black uppercase tracking-[0.2em] mb-6 shadow-md shadow-slate-200">Step 06</div>
+                    <h2 class="text-4xl md:text-5xl mb-8">Beyond Launch—We Scale</h2>
+                    <p class="text-slate-500 leading-loose mb-8 text-sm md:text-base">
+                        Launch is just the beginning. We continuously monitor, optimize, and improve your digital presence to ensure long-term growth.
+                    </p>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">SEO improvements</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Performance optimization</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Conversion tracking</span>
+                        <span class="px-4 py-2 bg-white rounded-lg text-[10px] font-bold border border-slate-100 shadow-sm">Updates & scaling</span>
+                    </div>
+                </div>
+                <div class="w-full lg:w-1/2 order-1 lg:order-2">
+                    <div class="process-card p-10 md:p-16 rounded-[3rem]">
+                        <span class="step-number text-slate-800">06</span>
+                        <div class="w-20 h-20 rounded-2xl bg-slate-800/10 flex items-center justify-center mb-10">
+                            <svg class="w-10 h-10 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Scale & Evolve</h3>
+                        <p class="text-slate-500 font-medium text-sm italic">"Sustaining digital dominance."</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-40 px-8 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-24 reveal">
+                <p class="text-brand-blue font-black uppercase tracking-[0.4em] text-[10px] mb-4">Success Stories</p>
+                <h2 class="text-5xl md:text-7xl font-bold mb-8">What Our <span class="italic text-gradient">Partners</span> Say.</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 reveal">
+                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 relative group transition-all hover:bg-white hover:shadow-2xl">
+                    <div class="text-6xl text-brand-blue opacity-20 font-serif absolute top-8 left-8">“</div>
+                    <p class="text-xl text-slate-600 leading-relaxed mb-10 relative z-10">
+                        E-ERA TECH didn't just build us a website; they architected a growth engine. Their systematic approach to SEO and performance engineering doubled our organic reach within months.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                            <div class="w-full h-full bg-brand-blue flex items-center justify-center text-white font-bold">JD</div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">James Dalton</h4>
+                            <p class="text-xs text-slate-400 uppercase tracking-widest">CEO, Apex Solutions</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-12 rounded-[2.5rem] bg-slate-50 border border-slate-100 relative group transition-all hover:bg-white hover:shadow-2xl">
+                    <div class="text-6xl text-brand-teal opacity-20 font-serif absolute top-8 left-8">“</div>
+                    <p class="text-xl text-slate-600 leading-relaxed mb-10 relative z-10">
+                        The visual clarity and strategic roadmap they provided gave our brand the authority it needed to compete on a global scale. Absolute precision in every delivery.
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-200 overflow-hidden">
+                            <div class="w-full h-full bg-brand-teal flex items-center justify-center text-white font-bold">SR</div>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900">Sarah Reed</h4>
+                            <p class="text-xs text-slate-400 uppercase tracking-widest">Marketing Director, GlobalReach</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects CTA -->
+    <section id="projects" class="py-40 px-8 relative overflow-hidden bg-slate-900">
+        <div class="max-w-7xl mx-auto reveal">
+            <div class="project-cta-box p-12 md:p-24 rounded-[3rem] border border-white/10 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-12">
+                <div class="max-w-xl">
+                    <p class="text-highlight-gold font-bold uppercase tracking-[0.5em] text-[10px] mb-6">Our Portfolio</p>
+                    <h2 class="text-5xl md:text-6xl font-bold text-white mb-8">Witness Our <br><span class="italic font-normal text-brand-blue">Craftsmanship.</span></h2>
+                    <p class="text-slate-400 text-lg leading-relaxed">
+                        From global infrastructure to boutique identity systems, we invite you to explore the technical benchmarks we've set across the digital landscape.
+                    </p>
+                </div>
+                <div class="relative">
+                    <a href="#featured-projects" class="bg-brand-gradient text-white px-12 py-8 rounded-[2rem] font-black text-xl hover:scale-110 transition-all shadow-2xl flex items-center group whitespace-nowrap">
+                        View Projects
+                        <svg class="ml-4 h-6 w-6 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing Section -->
+    <section class="py-40 px-8 relative bg-white border-y border-slate-100">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-5xl md:text-7xl mb-10">Built for <span class="italic font-normal">Clarity.</span> Designed for <span class="text-gradient">Results.</span></h2>
+            <div class="w-24 h-1 bg-highlight-gold mx-auto mb-10"></div>
+            <p class="text-slate-500 text-xl font-light leading-relaxed">
+                Our process ensures that every step—from idea to execution—is aligned with your business goals. No confusion. No wasted effort. Just results.
+            </p>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="lets-connect" class="py-40 px-6 bg-slate-50">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-6xl md:text-[5rem] font-bold text-slate-900 mb-10 leading-tight">Let’s Build Something <br> <span class="text-gradient">That Works.</span></h2>
             <div class="flex justify-center">
-                <a href="https://calendly.com/" target="_blank" class="bg-brand-gradient text-white px-16 py-8 rounded-[2rem] font-black text-2xl hover:scale-105 transition-all shadow-[0_20px_50px_rgba(0,119,255,0.3)] flex items-center group">
-                    Book Now
+                <a href="https://calendly.com/" target="_blank" class="cta-primary text-white px-16 py-8 rounded-[2rem] font-black text-2xl hover:scale-105 transition-all shadow-xl flex items-center group">
+                    Start Your Project
                     <svg class="ml-4 h-8 w-8 transition-transform group-hover:translate-x-2" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </a>
             </div>
@@ -373,8 +520,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-20 mb-24">
                 <div class="space-y-10">
                     <div class="flex items-center space-x-3">
-                        <img src="image_9bcd84.png" alt="Logo" class="h-10">
-                        <span class="text-2xl font-black uppercase tracking-tighter" style="font-family: 'Poppins', sans-serif;">E-ERA TECH</span>
+                        <span class="text-2xl font-black uppercase tracking-tighter" style="font-family: 'Poppins', sans-serif; font-weight: 900;">E-ERA TECH</span>
                     </div>
                     <p class="text-slate-400 font-medium text-sm leading-loose">Pioneering digital infrastructures and iconic brand systems since inception.</p>
                 </div>
@@ -389,9 +535,10 @@
                 <div>
                     <h5 class="text-[10px] font-black uppercase tracking-[0.4em] text-slate-300 mb-10">Network</h5>
                     <ul class="space-y-6 text-sm font-bold text-slate-800">
-                        <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})">Home</a></li>
-                        <li><a href="#leadership">Team</a></li>
-                        <li><a href="https://calendly.com/" target="_blank">Consultation</a></li>
+                        <li><a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="hover:text-brand-blue transition-colors">Home</a></li>
+                        <li><a href="#testimonials" class="hover:text-brand-blue transition-colors">Testimonials</a></li>
+                        <li><a href="https://calendly.com/" target="_blank" class="hover:text-brand-blue transition-colors">Consultation</a></li>
+                        <li><a href="https://calendly.com/" target="_blank" class="text-brand-magenta hover:opacity-80 transition-opacity">Admin Login</a></li>
                     </ul>
                 </div>
                 <div>
@@ -409,32 +556,71 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
     <a id="back-to-top" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'}); return false;">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24"><path d="M5 15l7-7 7 7"/></svg>
+        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+            <path d="M5 15l7-7 7 7"/>
+        </svg>
     </a>
 
     <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('opacity-0')) {
+                menu.classList.remove('opacity-0', 'pointer-events-none');
+                menu.classList.add('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.add('opacity-0', 'pointer-events-none');
+                menu.classList.remove('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = '';
+            }
+        }
+
         // Custom Follower Cursor
-        const cursor = document.getElementById('cursor-follower');
+        const cursor = document.getElementById('cursor');
+        const follower = document.getElementById('cursor-follower');
+        
         document.addEventListener('mousemove', e => {
             cursor.style.top = e.clientY + 'px';
             cursor.style.left = e.clientX + 'px';
+            
+            // Lag effect for follower
+            setTimeout(() => {
+                follower.style.top = e.clientY + 'px';
+                follower.style.left = e.clientX + 'px';
+                follower.style.transform = 'translate(-50%, -50%)';
+            }, 50);
         });
 
-        document.addEventListener('mousedown', () => cursor.style.transform = 'translate(-50%, -50%) scale(0.7)');
-        document.addEventListener('mouseup', () => cursor.style.transform = 'translate(-50%, -50%) scale(1)');
-
-        // Scroll Reveal
-        const reveals = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+        // Scroll Logic
+        const reveal = () => {
+            const reveals = document.querySelectorAll(".reveal");
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                if (elementTop < windowHeight - 50) el.classList.add("active");
             });
-        }, { threshold: 0.1 });
+        };
 
-        reveals.forEach(reveal => revealObserver.observe(reveal));
+        window.addEventListener('scroll', () => {
+            // Scroll Progress Bar for the Timeline
+            const scrollProgress = document.getElementById('scroll-progress');
+            const totalHeight = document.body.scrollHeight - window.innerHeight;
+            const progress = (window.pageYOffset / totalHeight) * 100;
+            if (scrollProgress) scrollProgress.style.height = progress + '%';
+
+            // Back to Top Visibility
+            const btt = document.getElementById('back-to-top');
+            if (window.scrollY > 500) btt.classList.add('visible');
+            else btt.classList.remove('visible');
+
+            reveal();
+        });
+
+        // Initial run
+        reveal();
     </script>
 </body>
 </html>
